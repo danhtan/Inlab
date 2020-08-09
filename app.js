@@ -8,10 +8,10 @@ dotenv.config({ path: './env'});
 const app = express();
 
 const db = mysql.createConnection({
-  host: process.env.DATABASE_HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE
+  host: 'bqon1oszrjlhehhaz0dd-mysql.services.clever-cloud.com',
+  user: 'ujocmioalprjj9jo',
+  password: '99oiuibi5jLmPJbOrl0r',
+  database: 'bqon1oszrjlhehhaz0dd'
 });
 
 const publicDirectory = path.join(__dirname, './public');
@@ -33,6 +33,6 @@ if(error){
 })
 app.use('/' , require('./routes/pages'));
 app.use('/auth' , require('./routes/auth'));
-app.listen(8080,() =>{
+app.listen(process.env.PORT || 8080,() =>{
   console.log("Server run on 8080.");
 })
