@@ -10,8 +10,9 @@ const db = mysql.createConnection({
     database: 'bqon1oszrjlhehhaz0dd'
 });
 
+db.connect();
+
 exports.view = (req, res) => {
-    db.connect();
     const { employee_id } = req.body;
     db.query('SELECT * FROM member WHERE id = ?', [employee_id], (error, results) => {
         if (error) {
@@ -22,7 +23,6 @@ exports.view = (req, res) => {
     })
 }
 exports.register = (req, res) => {
-    db.connect();
     const { id, ten, ho, lop, msv, sdt, email } = req.body;
     db.query('INSERT INTO member SET ?', { id: id, ten: ten, ho: ho, lop: lop, msv: msv, sdt: sdt, email: email }, (error, results) => {
         if (error) {
@@ -37,7 +37,6 @@ exports.register = (req, res) => {
 
 }
 exports.update = (req, res) => {
-    db.connect();
     const { employee_id } = req.body;
     db.query('SELECT * FROM member WHERE id = ?', [employee_id], (error, results) => {
         if (error) {
@@ -49,7 +48,6 @@ exports.update = (req, res) => {
     })
 }
 exports.xuli_update = (req, res) => {
-    db.connect();
     var param = [
         req.body,
         req.body.id
