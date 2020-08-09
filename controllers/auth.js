@@ -1,16 +1,12 @@
 const express = require('express');
 const mysql = require("mysql");
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 
-const db = mysql.createConnection({
+const db = mysql.createPool({
     host: 'bqon1oszrjlhehhaz0dd-mysql.services.clever-cloud.com',
     user: 'ujocmioalprjj9jo',
     password: '99oiuibi5jLmPJbOrl0r',
     database: 'bqon1oszrjlhehhaz0dd'
 });
-
-db.connect();
 
 exports.view = (req, res) => {
     const { employee_id } = req.body;
@@ -64,5 +60,4 @@ exports.xuli_update = (req, res) => {
 
         }
     })
-
 }
